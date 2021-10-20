@@ -11,23 +11,23 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    $ cd ~/Desktop/
    ```
 
-2. Clone this git repo using your preferred secure method (HTTPS or SSH).
+2. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
-   $ git clone https://github.com/workos-inc/python-flask-admin-portal-example.git
+   $ git clone https://github.com/workos-inc/python-flask-example-applications.git
    ```
 
    or
 
    ```bash
    # SSH
-   $ git clone git@github.com:workos-inc/python-flask-admin-portal-example.git
+   $ git clone git@github.com:workos-inc/python-flask-example-applications.git
    ```
 
-3. Navigate to the cloned repo.
+3. Navigate to the Admin Portal example app within the cloned repo.
    ```bash
-   $ cd python-flask-admin-portal-example
-   ```
+   $ cd python-flask-example-applications/python-flask-admin-portal-example
+   ````
 
 4. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
    ```bash

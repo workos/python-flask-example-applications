@@ -18,24 +18,22 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    $ cd ~/Desktop/
    ```
 
-2. Clone this git repo using your preferred secure method (HTTPS or SSH).
+2. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
-   $ git clone https://github.com/workos-inc/python-flask-directory-sync-example.git
+   $ git clone https://github.com/workos-inc/python-flask-example-applications.git
    ```
 
-  or
+   or
 
    ```bash
    # SSH
-   $ git clone git@github.com:workos-inc/python-flask-directory-sync-example.git
+   $ git clone git@github.com:workos-inc/python-flask-example-applications.git
    ```
 
-### Install Dependencies
-
-3. Navigate to the cloned repo.
+3. Navigate to the Directory Sync example app within the cloned repo.
    ```bash
-   $ cd python-flask-directory-sync-example
+   $ cd python-flask-example-applications/python-flask-directory-sync-example
    ```
 
 4. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
@@ -44,6 +42,8 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    $ source env/bin/activate
    (env) $
    ```
+
+### Install Dependencies
 
 5. Install the cloned app's dependencies.
    ```bash
