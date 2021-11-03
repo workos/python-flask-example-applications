@@ -29,12 +29,12 @@ def directory_groups():
 @app.route('/webhooks', methods=['POST'])
 def webhooks():
     payload = request.get_data()
-    sig_header = request.headers['Workos-Signature']
+    sig_header = request.headers['WorkOS-Signature']
     
     response = workos_client.webhooks.verify_event(
-    payload = payload,
-    sig_header = sig_header,
-    secret = os.getenv('WEBHOOKS_SECRET')
+        payload = payload,
+        sig_header = sig_header,
+        secret = os.getenv('WEBHOOKS_SECRET')
     )
     # Validate the response is successful
     print(response)
