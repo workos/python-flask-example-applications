@@ -94,25 +94,11 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 
 ## Magic Link Setup with WorkOS
 
-Follow the [SSO authentication flow instructions](https://workos.com/docs/magic-link/guide) to set up an SSO connection.
-
-When you get to the step where you provide the `REDIRECT_URI` value, use http://localhost:5000/success. This must be the default `REDIRECT_URI` in your dashboard if there are multiple. 
-
-If you get stuck, please reach out to us at support@workos.com so we can help.
+Change the default REDIRECT_URI value in the "Configuration" page of your WorkOS dashboard to http://localhost:5000/success.
 
 ## Testing the Integration
 
-1. Naviagte to the `python-flask-magic-link-example` directory. Source the virtual environment we created earlier, if it isn't still activated from the steps above. Start the Flask server locally.
-
-   ```bash
-   $ cd ~/Desktop/python-flask-sso-example/
-   $ source env/bin/activate
-   (env) $ flask run
-   ```
-
-   Once running, navigate to http://localhost:5000 to test out the magic link workflow.
-
-   Hooray!
+1. Naviagte to http://localhost:5000 to test out the Magic Link flow!
 
 ## Need help?
 
