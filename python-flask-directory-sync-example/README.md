@@ -67,7 +67,9 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
     ```bash
     export WORKOS_API_KEY=<value found in step 6>
     export DIRECTORY_ID=<value found in step 6>
+    export WEBHOOKS_SECRET=<value found in WorkOS dashboard>
     ```
+    If you are utilizing the webhooks route, you will also set another environment variable called `WEBHOOKS_SECRET`. This secret can be found in the Webhooks section of your WorkOS dashboard. 
 
     To exit the Nano text editor, type `CTRL + x`. When prompted to "Save modified buffer", type `Y`, then press the `Enter` or `Return` key.
 
