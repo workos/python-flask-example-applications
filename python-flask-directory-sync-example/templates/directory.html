@@ -5,7 +5,7 @@
     <body class="container_success">
         <div class="logged_in_nav">
             <div class="flex">
-                <p>You're logged in, here is your groups object!</p>
+                <p>You're logged in, here is your users object!</p>
             </div>
             <div>
                 <img src="../static/images/workos_logo_new.png" alt="workos logo">
@@ -22,17 +22,22 @@
                     <a href="https://workos.com/docs" target="_blank"><button class='button'>Documentation</button></a>
                     <a href="https://workos.com/docs/reference" target="_blank"><button class='button'>API Reference</button></a>
                     <a href="https://workos.com/blog" target="_blank"><button class='button'>Blog</button></a>
-                    <a href="{{ url_for('home') }}"><button class='button'>Home</button></a>
+                    <a href="javascript:history.back()"><button class='button'>Home</button></a>
+                    
                 </div>
             </div>
             <div class="logged_in_div_right">
                 <div class="flex_column">
-                    <h2>Raw Groups Response Details</h2>
+                    <h2>Raw Directory Object Details</h2>
                     <div class="text_box">
-                        <p>{{groups}}</p>
+                        <p>{{ directory }}</p>
                     </div>
                 </div>
-
+                <div class="flex">
+                    <a class="button directory_button" href="/users?id={{id}}">Users</a>
+                    <br>
+                    <a class="button directory_button" href="/groups?id={{id}}">Groups</a>
+                </div>
             </div>
         </div>
     </body>

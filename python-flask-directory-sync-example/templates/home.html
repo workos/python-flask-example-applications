@@ -13,9 +13,13 @@
             </div>
             
             <h2>Python Flask Directory Sync Example App</h2>
-            <a class="button login_button" href="{{ url_for('directory_users') }}">Users</a>
-            <br>
-            <a class="button login_button" href="{{ url_for('directory_groups') }}">Groups</a>
+
+                {% for i in directories.data %}
+                <a class="button login_button" href="/directory?id={{i['id']}}">{{ i['name'] }}</a>
+                {% endfor %}
+
         </div>
     </body>
 </html>
+
+

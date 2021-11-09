@@ -12,22 +12,39 @@ directory_id = os.getenv('DIRECTORY_ID')
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    directories = workos.client.directory_sync.list_directories()
+    print(directories)
+    directoryNames = []
+    for i in directories['data']:
+        directoryNames.append(i['name'])
+    print(directoryNames)
+    return render_template('home.html', directories=directories)
+
+@app.route('/directory')
+def directory():
+    directory_id = request.args.get('id')
+    print(directory_id)
+    directory = workos.client.directory_sync.get_directory(directory_id)
+    print(directory)
+    return render_template('directory.html', directory=directory, id=directory['id'])
 
 @app.route('/users')
 def directory_users():
+    directory_id = request.args.get('id')
     users = workos_client.directory_sync.list_users(directory=directory_id)
     return render_template('users.html', users=users)
 
 
 @app.route('/groups')
 def directory_groups():
+    directory_id = request.args.get('id')
     groups = workos_client.directory_sync.list_groups(directory=directory_id)
 
     return render_template('groups.html', groups=groups)
 
 @app.route('/webhooks', methods=['POST'])
 def webhooks():
+    print(request)
     payload = request.get_data()
     sig_header = request.headers['WorkOS-Signature']
     
