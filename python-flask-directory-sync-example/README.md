@@ -54,8 +54,8 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 
 6. Obtain and make note of the following values. In the next step, these will be set as environment variables.
    - Your [WorkOS API key](https://dashboard.workos.com/api-keys)
-   - Your `DIRECTORY_ID`, in the format `directory_<random-alphanumeric-string>`, retrievable from the URL in the Directory Sync area of the WorkOS dashboard:
-    ![](directory_id_location.png)  
+   - Your `WEBHOOKS_SECRET`, retrievable from the URL in the WEBHOOKS area of the WorkOS dashboard. This is only required if you are utilizing the webhooks route of this application to receive and validate webhook events. 
+
 
 7. Ensure you're in the root directory for the example app, `python-flask-directory-sync-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
    ```bash
@@ -66,10 +66,8 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
  8. Once the Nano text editor opens, you can directly edit the `.env` file by listing the environment variables:
     ```bash
     export WORKOS_API_KEY=<value found in step 6>
-    export DIRECTORY_ID=<value found in step 6>
-    export WEBHOOKS_SECRET=<value found in WorkOS dashboard>
+    export WEBHOOKS_SECRET=<value found in step 6>
     ```
-    If you are utilizing the webhooks route, you will also set another environment variable called `WEBHOOKS_SECRET`. This secret can be found in the Webhooks section of your WorkOS dashboard. 
 
     To exit the Nano text editor, type `CTRL + x`. When prompted to "Save modified buffer", type `Y`, then press the `Enter` or `Return` key.
 
@@ -81,7 +79,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    You can ensure the environment variables were set correctly by running the following commands. The output should match the corresponding values.
    ```bash
    (env) $ echo $WORKOS_API_KEY
-   (env) $ echo $DIRECTORY_ID
+   (env) $ echo $WEBHOOKS_SECRET
    ```
 
 ## Start the server
