@@ -1,10 +1,20 @@
 import os
-from flask import (Flask, render_template, request, Response)
+from flask import (Flask, render_template, request)
 import workos
 from workos import client as workos_client
+from flask_socketio import (SocketIO, emit)
+import json
+
 
 DEBUG = False
 app = Flask(__name__)
+
+
+app.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(app)
+
+if __name__ == '__main__':
+    socketio.run(app)
 
 workos.api_key = os.getenv('WORKOS_API_KEY')
 workos.base_api_url = 'http://localhost:5000/' if DEBUG else workos.base_api_url
@@ -42,19 +52,20 @@ def directory_groups():
 
     return render_template('groups.html', groups=groups)
 
-@app.route('/webhooks', methods=['POST'])
+@app.route('/webhooks', methods=['GET', 'POST'])
 def webhooks():
     print(request)
-    payload = request.get_data()
-    sig_header = request.headers['WorkOS-Signature']
-    
-    response = workos_client.webhooks.verify_event(
-        payload = payload,
-        sig_header = sig_header,
-        secret = os.getenv('WEBHOOKS_SECRET')
-    )
-    # Validate the response is successful
-    print(response)
+    if request.data:
+        payload = request.get_data()
+        sig_header = request.headers['WorkOS-Signature']
+        response = workos_client.webhooks.verify_event(
+            payload = payload,
+            sig_header = sig_header,
+            secret = os.getenv('WEBHOOKS_SECRET')
+        )
+        
+        message = json.dumps(response)
+        socketio.emit('webhook_received', message)
 
     # Return a 200 to prevent retries based on validation
-    return Response(status=200)
+    return render_template('webhooks.html')
