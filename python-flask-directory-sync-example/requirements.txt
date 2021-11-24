@@ -2,3 +2,4 @@
 Flask>=1.1.2
 workos>=0.3.2
 python-dotenv
+flask_socketio

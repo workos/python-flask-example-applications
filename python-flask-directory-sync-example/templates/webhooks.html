@@ -33,7 +33,10 @@
                     </div>
                 </div>
                 <div id='clear_button_div' class='flex directory_container'>
-                    <div>
+                    <div id="tutorial_button" class="flex half_width">
+                        <a href="https://workos.com/blog/test-workos-webhooks-locally-ngrok" target="_blank" class="button login_button">Tutorial</a>
+                    </div>
+                    <div id="clear_button" class="hidden">
                         <a href="/webhooks" class="button button_outline">Clear</a>
                     </div>
                 </div>
@@ -42,20 +45,22 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
         <script type="text/javascript" charset="utf-8">
-            var counter = 0;
-            var webhooksView = document.getElementById('webhooks-view');
+            var counter = 0
+            var webhooksView = document.getElementById('webhooks-view')
             var clearButtonDiv = document.getElementById('clear_button_div')
+            var clearButton = document.getElementById('clear_button')
+            var tutorialButton = document.getElementById('tutorial_button')
 
-            var socket = io("http://localhost:5000");
+            var socket = io("http://localhost:5000")
             socket.on('connect', function() {
                 console.log('socket connection successful')
-            });
+            })
                     
             socket.on('webhook_received', (data) => {
-                webhooksView.classList.add("webhooks_container");
+                webhooksView.classList.add("webhooks_container")
                 webhooksView.insertAdjacentHTML("afterbegin",
                 
-                "<div class='margin_top'> Webhook received at:" + new Date().toISOString() + "</div>" +
+                "<div class='margin_top'> Webhook received at: " + new Date().toISOString() + "</div>" +
                 "<br/>" +
                 "<code>" + data + "</code>" +
                 "<br/>"
@@ -63,9 +68,11 @@
                 if (counter < 1) {
                     clearButtonDiv.classList.remove('login_button')
                     clearButtonDiv.classList.add('flex_right')
+                    clearButton.classList.remove('hidden')
+                    tutorialButton.classList.add('hidden')
                     counter ++
                 }
-            });
+            })
         </script>
     </body>
 </html>

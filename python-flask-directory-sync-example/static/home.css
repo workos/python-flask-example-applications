@@ -38,6 +38,14 @@ body {
     justify-content: flex-end;
 }
 
+.flex_space_between {
+    justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
 .margin_top {
     margin-top: 15px;
 }
@@ -96,6 +104,10 @@ body {
 
 .login_button {
     width: 95%;
+}
+
+.half_width {
+    width: 50%;
 }
 
 .directory_button {

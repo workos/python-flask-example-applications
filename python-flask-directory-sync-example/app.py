@@ -1,9 +1,8 @@
 import os
-from flask import (Flask, render_template, request, Response)
+from flask import (Flask, render_template, request)
 import workos
 from workos import client as workos_client
-import asyncio
-from flask_socketio import (SocketIO, send, emit)
+from flask_socketio import (SocketIO, emit)
 import json
 
 
