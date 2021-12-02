@@ -89,7 +89,12 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    flask run
    ```
 
-11. Once the server is running, navigate to http://localhost:5000 to view the home page of the app where you can then select the view for users or groups. 
+   If you are using Mac OS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
+   ```bash
+   (env) $ flask run -p 5001
+   ```
+
+11. Once the server is running, navigate to `http://localhost:5000`, or `http://localhost:5001` depending on which port you launched the server,  to view the home page of the app where you can then select the view for users or groups. 
 
     - The `/users` URL corresponds to the WorkOS API's [List Directory Users endpoint](https://workos.com/docs/reference/directory-sync/user/list)
     - The `/groups` URL corresponds to the WorkOS API's [List Directory Groups endpoint](https://workos.com/docs/reference/directory-sync/group/list)
