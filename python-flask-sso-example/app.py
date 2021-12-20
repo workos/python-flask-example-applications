@@ -16,7 +16,9 @@ workos.project_id = os.getenv('WORKOS_CLIENT_ID')
 workos.base_api_url = 'http://localhost:7000/' if DEBUG else workos.base_api_url
 
 # Enter Connection ID here
-CUSTOMER_CONNECTION_ID = 'conn_01FPTSFRH9WVTKBXV10N5X87R8'
+
+CUSTOMER_CONNECTION_ID = 'xxx'
+
 
 @app.route('/')
 def login():
