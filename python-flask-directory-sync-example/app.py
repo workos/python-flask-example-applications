@@ -52,6 +52,17 @@ def directory_groups():
 
     return render_template('groups.html', groups=groups)
 
+@app.route('/update_org', methods=['GET', 'POST'])
+def update_org():
+    print(request)
+    response = workos_client.organizations.update_organization(
+        organization="org_01FGM2T96YX19Z4HENZ1AC7848",
+        name="Planet Express",
+        domains=["newboom.com", "workos.com", "hotmail.com", "boom.com"]
+    )
+    print(json.dumps(response))
+    return json.dumps(response)
+
 @app.route('/webhooks', methods=['GET', 'POST'])
 def webhooks():
     print(request)
