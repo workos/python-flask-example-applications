@@ -13,12 +13,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 
 ### Clone Directory
 
-1. In your CLI, navigate to the directory into which you want to clone this git repo.
-   ```bash
-   $ cd ~/Desktop/
-   ```
-
-2. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
+1. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
    $ git clone https://github.com/workos-inc/python-flask-example-applications.git
@@ -31,12 +26,12 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    $ git clone git@github.com:workos-inc/python-flask-example-applications.git
    ```
 
-3. Navigate to the Directory Sync example app within the cloned repo.
+2. Navigate to the Directory Sync example app within the cloned repo.
    ```bash
    $ cd python-flask-example-applications/python-flask-directory-sync-example
    ```
 
-4. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
+3. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
    ```bash
    $ python3 -m venv env
    $ source env/bin/activate
@@ -45,25 +40,25 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 
 ### Install Dependencies
 
-5. Install the cloned app's dependencies.
+4. Install the cloned app's dependencies.
    ```bash
    (env) $ pip install -r requirements.txt
    ```
 
 ### Set Environment Variables
 
-6. Obtain and make note of the following values. In the next step, these will be set as environment variables.
+5. Obtain and make note of the following values. In the next step, these will be set as environment variables.
    - Your [WorkOS API key](https://dashboard.workos.com/api-keys)
    - Your `WEBHOOKS_SECRET`, retrievable from the URL in the WEBHOOKS area of the WorkOS dashboard. This is only required if you are utilizing the webhooks route of this application to receive and validate webhook events. 
 
 
-7. Ensure you're in the root directory for the example app, `python-flask-directory-sync-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
+6. Ensure you're in the root directory for the example app, `python-flask-directory-sync-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
    ```bash
    (env) $ touch .env
    (env) $ nano .env
    ```
 
- 8. Once the Nano text editor opens, you can directly edit the `.env` file by listing the environment variables:
+7. Once the Nano text editor opens, you can directly edit the `.env` file by listing the environment variables:
     ```bash
     export WORKOS_API_KEY=<value found in step 6>
     export WEBHOOKS_SECRET=<value found in step 6>
@@ -71,7 +66,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 
     To exit the Nano text editor, type `CTRL + x`. When prompted to "Save modified buffer", type `Y`, then press the `Enter` or `Return` key.
 
-9. Source the environment variables so they are accessible to the operating system.
+8. Source the environment variables so they are accessible to the operating system.
    ```bash
    (env) $ source .env
    ```
@@ -84,7 +79,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 
 ## Start the server
 
-10. Use this command to run the app:
+9. Use this command to run the app:
    ```bash
    flask run
    ```
@@ -94,7 +89,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    (env) $ flask run -p 5001
    ```
 
-11. Once the server is running, navigate to `http://localhost:5000`, or `http://localhost:5001` depending on which port you launched the server,  to view the home page of the app where you can then select the view for users or groups. 
+10. Once the server is running, navigate to `http://localhost:5000`, or `http://localhost:5001` depending on which port you launched the server,  to view the home page of the app where you can then select the view for users or groups. 
 
     - The `/users` URL corresponds to the WorkOS API's [List Directory Users endpoint](https://workos.com/docs/reference/directory-sync/user/list)
     - The `/groups` URL corresponds to the WorkOS API's [List Directory Groups endpoint](https://workos.com/docs/reference/directory-sync/group/list)
@@ -103,7 +98,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 
 ## Test Webhooks
 
-12. WorkOS sends Webhooks as a way of managing updates to Directory Sync connections. The Webhooks section of the WorkOS Dashboard allows you to send test webhooks to your application. The Test Webhooks section of this application allows you to visualize the validated webhooks directly in this application in real-time. [Please review the tutorial here](https://workos.com/blog/test-workos-webhooks-locally-ngrok) for details on how this can be done locally. 
+11. WorkOS sends Webhooks as a way of managing updates to Directory Sync connections. The Webhooks section of the WorkOS Dashboard allows you to send test webhooks to your application. The Test Webhooks section of this application allows you to visualize the validated webhooks directly in this application in real-time. [Please review the tutorial here](https://workos.com/blog/test-workos-webhooks-locally-ngrok) for details on how this can be done locally. 
 
 
 ## Need help?
