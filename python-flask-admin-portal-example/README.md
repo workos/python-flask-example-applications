@@ -6,12 +6,7 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 
 ## Flask Project Setup
 
-1. In your CLI, navigate to the directory into which you want to clone this git repo.
-   ```bash
-   $ cd ~/Desktop/
-   ```
-
-2. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
+1. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
    $ git clone https://github.com/workos-inc/python-flask-example-applications.git
@@ -24,34 +19,34 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    $ git clone git@github.com:workos-inc/python-flask-example-applications.git
    ```
 
-3. Navigate to the Admin Portal example app within the cloned repo.
+2. Navigate to the Admin Portal example app within the cloned repo.
    ```bash
    $ cd python-flask-example-applications/python-flask-admin-portal-example
    ````
 
-4. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
+3. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
    ```bash
    $ python3 -m venv env
    $ source env/bin/activate
    (env) $
    ```
 
-5. Install the cloned app's dependencies.
+4. Install the cloned app's dependencies.
    ```bash
    (env) $ pip install -r requirements.txt
    ```
 
-6. Obtain and make note of the following values. In the next step, these will be set as environment variables.
+5. Obtain and make note of the following values. In the next step, these will be set as environment variables.
    - Your [WorkOS API key](https://dashboard.workos.com/api-keys)
    - Your `WORKOS_CLIENT_ID`, in the format `client_<random-alphanumeric-string>`, retrievable from WorkOS dashboard under "Configuration".
 
-7. Ensure you're in the root directory for the example app, `python-flask-admin-portal-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
+6. Ensure you're in the root directory for the example app, `python-flask-admin-portal-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
    ```bash
    (env) $ touch .env
    (env) $ nano .env
    ```
 
-8. Once the Nano text editor opens, you can directly edit the `.env` file by listing the environment variables:
+7. Once the Nano text editor opens, you can directly edit the `.env` file by listing the environment variables:
    ```bash
    export WORKOS_API_KEY=<value found in step 6>
    export WORKOS_CLIENT_ID=<value found in step 6>
@@ -59,7 +54,7 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 
    To exit the Nano text editor, type `CTRL + x`. When prompted to "Save modified buffer", type `Y`, then press the `Enter` or `Return` key.
 
-9. Source the environment variables so they are accessible to the operating system.
+8. Source the environment variables so they are accessible to the operating system.
    ```bash
    (env) $ source .env
    ```
@@ -70,13 +65,13 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    (env) $ echo $WORKOS_CLIENT_ID
    ```
 
-10. Update the Admin Portal Redirect Link in the "Configuration" page of your WorkOS Dashboard. The URL should be http://localhost:5000. If you are using Mac OS Monterey, set this to localhost:5001. 
+9. Update the Admin Portal Redirect Link in the "Configuration" page of your WorkOS Dashboard. The URL should be http://localhost:5000. If you are using Mac OS Monterey, set this to localhost:5001. 
 
 After an Admin Portal user creates an SSO connection using the Admin Portal, they need to be redirected to a webpage within your application (usually this webpage confirms successful creation of the connection). To configure which webpage this is, enter the webpage’s URL in the Configuration section of your WorkOS dashboard under the “Admin Portal Redirect Link” header. For production usage this URL must begin with HTTPS, but for development purposes the URL can begin with HTTP.
 
 ## Start the server
 
-11. The final setup step is to start the server.
+10. The final setup step is to start the server.
    ```bash
    (env) $ flask run
    ```
