@@ -30,25 +30,26 @@
         </div>
         <div class="logged_in_div_right">
             <div class="flex_column">
-                <div class="flex space_evenly width_40vw">
-                    <div>
-                        <h2>Current MFA Factors</h2>
-                    </div>
-                    <div>
-                        <a href="/enroll_sms_factor"><button class="button button-outline button-sm">Enroll New
-                                Factor</button></a>
-                    </div>
+                <div class="flex-column">
+
+
                 </div>
 
                 <div class="flex-column">
-                    {% if factors %}
-                    {% for factor in factors %}
                     <div>
-                        <a class="button login_button" href="/factor_detail?id={{factor['id']}}">{{ factor['id'] }} | {{
-                            factor['type']}}</a>
+                        <form method="POST" action="{{ url_for('verify_factor') }}">
+                            <div class='flex_column'>
+                                <div>
+                                    <input type="text" id="code" name="code" class="text_input"
+                                        placeholder="Input Auth Code">
+                                </div>
+                                <div>
+                                    <button type="submit" class="button">Verify Factor</button>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
-                    {% endfor %}
-                    {% endif %}
                 </div>
 
             </div>

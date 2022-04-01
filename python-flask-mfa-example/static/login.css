@@ -187,3 +187,13 @@ div.text_box {
 .logged_in_nav img:hover {
     border: 2px solid #555555;
 }
+
+.text_input {
+    border: 1px solid #555555;
+    border-radius: 10px;
+    margin: 20px 0px 7px 0px;
+    padding: 5px;
+    height: 35px;
+    width: 375px;
+    text-align: center;
+}
