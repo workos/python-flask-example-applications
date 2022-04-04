@@ -38,6 +38,10 @@ body {
     justify-content: space-evenly;
 }
 
+.space_between {
+    justify-content: space-between;
+}
+
 .width_40vw {
     width: 40vw;
 }
@@ -194,6 +198,14 @@ div.text_box {
     margin: 20px 0px 7px 0px;
     padding: 5px;
     height: 35px;
-    width: 375px;
+    width: 18vw;
     text-align: center;
+}
+
+.factor_card {
+    border: 1px solid #555555;
+    border-radius: 10px;
+    width: 20vw;
+    margin: 0px 15px 0px 15px;
+    padding: 25px;
 }
