@@ -46,6 +46,10 @@ body {
     width: 40vw;
 }
 
+.width_10vw {
+    width: 10vw;
+}
+
 .container_success {
     display: flex;
     flex-direction: column;
@@ -208,4 +212,14 @@ div.text_box {
     width: 20vw;
     margin: 0px 15px 0px 15px;
     padding: 25px;
+}
+
+.qr_div {
+    align-self: center;
+    padding-top: 15px;
+}
+
+.qr_code {
+    width: 7vw; 
+    max-width: 100px;
 }

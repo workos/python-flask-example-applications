@@ -63,20 +63,38 @@ def factor_detail():
     for factor in session['factor_list']:
         if factor['id'] == factorId:
             fullFactor = factor
+
+    phone_number = '-'
+    if factor["type"] == "sms":
+        phone_number = factor['sms']['phone_number']
+
+    qr_code = '-'
+    if factor["type"] == 'totp':
+        qr_code = factor["totp"]["qr_code"]
+
     session['current_factor'] = fullFactor["id"]
+    session['current_factor_type'] = fullFactor["type"]
     session.modified = True
-    return render_template('factor_detail.html', factor=fullFactor)
+    return render_template('factor_detail.html', factor=fullFactor, phone_number=phone_number, qr_code=qr_code)
 
 
 @app.route('/challenge_factor', methods=["POST"])
 def challenge_factor():
-    message = request.form['sms_message']
-    session['sms_message'] = message
+    if session['current_factor_type'] == "sms":
+        message = request.form['sms_message']
+        session['sms_message'] = message
 
-    challenge = workos.client.mfa.challenge_factor(
-        authentication_factor_id=session['current_factor'],
-        sms_template=message,
-    )
+        challenge = workos.client.mfa.challenge_factor(
+            authentication_factor_id=session['current_factor'],
+            sms_template=message,
+        )
+
+    if session['current_factor_type'] == "totp":
+        authentication_factor_id = session["current_factor"]
+        challenge = workos.client.mfa.challenge_factor(
+            authentication_factor_id=authentication_factor_id,
+        )
+
     session['challenge_id'] = challenge['id']
     session.modified = True
     return render_template('challenge_factor.html')

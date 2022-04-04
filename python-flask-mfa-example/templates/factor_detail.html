@@ -30,27 +30,37 @@
         </div>
         <div class="logged_in_div_right">
             <div class="flex_column">
-                <div class="flex-column">
-                    <div>
-                        <h2>ID: {{factor['id']}}</h2>
+                <div class="flex">
+                    <div class="flex-column">
+                        <div>
+                            <h2>ID: {{factor['id']}}</h2>
+                        </div>
+                        <div>
+                            <p>Type: <code>{{factor['type']}}</code></p>
+                            <p>Environment: <code>{{factor['environment_id']}}</code></p>
+                            <p>Phone Number: <code>{{phone_number}}</code></p>
+                            <p>Created At: <code>{{factor['created_at']}}</code></p>
+                            <p>Updated At: <code>{{factor['updated_at']}}</code></p>
+                        </div>
                     </div>
-                    <div>
-                        <p>Type: <code>{{factor['type']}}</code></p>
-                        <p>Environment: <code>{{factor['environment_id']}}</code></p>
-                        <p>Phone Number: <code>{{factor['sms']['phone_number']}}</code></p>
-                        <p>Created At: <code>{{factor['created_at']}}</code></p>
-                        <p>Updated At: <code>{{factor['updated_at']}}</code></p>
+                    {% if factor['type'] == 'totp' %}
+                    <div class="qr_div">
+                        <img class="qr_code" src="{{qr_code}}" alt="qr_code">
                     </div>
+
+                    {% endif %}
                 </div>
 
                 <div class="flex-column">
                     <div>
                         <form method="POST" action="{{ url_for('challenge_factor') }}">
                             <div class='flex_column'>
+                                {% if factor['type'] == 'sms' %}
                                 <div>
                                     <input type="text" id="sms_message" name="sms_message" class="text_input"
                                         placeholder="Custom SMS Message Input {{code}}">
                                 </div>
+                                {% endif %}
                                 <div>
                                     <button type="submit" class="button">Challenge Factor</button>
                                 </div>
