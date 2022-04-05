@@ -1,5 +1,5 @@
-# python-flask-sso-example
-An example Flask application demonstrating how to use the [WorkOS Python SDK](https://github.com/workos-inc/workos-python) to authenticate users via SSO.
+# python-flask-mfa-example
+An example Flask application demonstrating how to use the [WorkOS MFA API](https://workos.com/docs/mfa/guide) using the [Python SDK](https://github.com/workos-inc/workos-python) to authenticate users.
 
 ## Prerequisites
 - Python 3.6+
@@ -10,19 +10,19 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 1. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
-   $ git clone https://github.com/workos-inc/python-flask-example-applications.git
+   $ git clone https://github.com/workos/python-flask-example-applications.git
    ```
 
    or
 
    ```bash
    # SSH
-   $ git clone git@github.com:workos-inc/python-flask-example-applications.git
+   $ git clone git@github.com:workos/python-flask-example-applications.git
    ```
 
 2. Navigate to the sso app within the cloned repo.
    ```bash
-   $ cd python-flask-example-applications/python-flask-sso-example
+   $ cd python-flask-example-applications/python-flask-mfa-example
    ```
 
 3. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
@@ -65,11 +65,11 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    ```bash
    (env) $ echo $WORKOS_API_KEY
    (env) $ echo $WORKOS_CLIENT_ID
+   (env) $ echo $APP_SECRET_KEY
    ```
 
-9. In `python-flask-sso-example/app.py` change the `CUSTOMER_CONNECTION_ID` string value to the connection you will be testing the login for. This can be found in your WorkOS Dashboard.
 
-10. The final setup step is to start the server.
+9. The final setup step is to start the server.
    ```bash
    (env) $ flask run
    ```
@@ -95,28 +95,20 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    You can stop the local Flask server for now by entering `CTRL + c` on the command line.
 
 
-## SSO Setup with WorkOS
+## Using the MFA application
 
-Follow the [SSO authentication flow instructions](https://workos.com/docs/sso/guide/introduction) to set up an SSO connection.
+11. This application is meant to showcase the MFA API and how to interact with it using the WorkOS Python SDK. It is not meant to show a real-life example of how MFA should be implemented. 
 
-When you get to the step where you provide the `REDIRECT_URI` value, use http://localhost:5000/auth/callback.
+   The app supports two types of MFA flows, SMS and Time-based One Time Password (TOTP). 
 
-If you get stuck, please reach out to us at support@workos.com so we can help.
+   SMS: The SMS flow requires you to send a code via text message. You can customize this message, but the message must include the string "{{code}}". This string of characters tells the WorkOS API to generate a random code that will be populated automatically. If "{{code}}" is not included in the message, the authentication cannot be completed. 
 
-## Testing the Integration
+   TOTP: This type of authentication requires the use of a 3rd party authentication app (1Password, Authy, Google Authenticator, Microsoft Authenticator, Duo, etc). Scan the QR code from the Factor Details page to create the corresponding factor in the 3rd party app, then enter the time-based password when prompted in this MFA application.  
 
-11. Naviagte to the `python-flask-sso-example` directory. Source the virtual environment we created earlier, if it isn't still activated from the steps above. Start the Flask server locally.
-
-   ```bash
-   $ cd ~/Desktop/python-flask-sso-example/
-   $ source env/bin/activate
-   (env) $ flask run
-   ```
-
-   Once running, navigate to `localhost:5000`, or `localhost:5001` depending on which port you launched the server, to test out the SSO workflow.
-
-   Hooray!
+   
 
 ## Need help?
+
+First, make sure to reference the MFA docs at https://workos.com/docs/mfa/guide. 
 
 If you get stuck and aren't able to resolve the issue by reading our API reference or tutorials, you can reach out to us at support@workos.com and we'll lend a hand.
