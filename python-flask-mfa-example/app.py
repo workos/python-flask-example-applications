@@ -18,7 +18,6 @@ workos.base_api_url = 'http://localhost:7000/' if DEBUG else workos.base_api_url
 
 @app.route('/')
 def home():
-    # print(session)
     if session['factor_list']:
         return render_template('list_factors.html', factors=session['factor_list'])
     return render_template('list_factors.html', )
@@ -51,7 +50,6 @@ def enroll_factor():
             totp_user=totp_user
         )
 
-    print(new_factor)
     session['factor_list'].append(new_factor)
     session.modified = True
     return redirect('/')
@@ -64,18 +62,17 @@ def factor_detail():
         if factor['id'] == factorId:
             fullFactor = factor
 
-    phone_number = '-'
-    if factor["type"] == "sms":
-        phone_number = factor['sms']['phone_number']
+        phone_number = '-'
+        if factor["type"] == "sms":
+            phone_number = factor['sms']['phone_number']
 
-    qr_code = '-'
-    if factor["type"] == 'totp':
-        qr_code = factor["totp"]["qr_code"]
+        if factor["type"] == 'totp':
+            session['current_factor_qr'] = factor["totp"]["qr_code"]
 
     session['current_factor'] = fullFactor["id"]
     session['current_factor_type'] = fullFactor["type"]
     session.modified = True
-    return render_template('factor_detail.html', factor=fullFactor, phone_number=phone_number, qr_code=qr_code)
+    return render_template('factor_detail.html', factor=fullFactor, phone_number=phone_number, qr_code=session['current_factor_qr'])
 
 
 @app.route('/challenge_factor', methods=["POST"])
@@ -108,11 +105,14 @@ def verify_factor():
         authentication_challenge_id=challenge_id,
         code=code,
     )
-    print(verify_factor['challenge'])
-    return render_template('challenge_success.html', challenge=verify_factor['challenge'])
+
+    return render_template('challenge_success.html', challenge=verify_factor['challenge'], valid=verify_factor['valid'], type=session['current_factor_type'])
 
 
 @app.route('/clear_session', methods=["GET"])
 def clear_session():
     session["factor_list"] = []
+    session["challenge_id"] = ''
+    session['current_factor'] = ''
+    session['current_factor_type'] = ''
     return redirect('/')

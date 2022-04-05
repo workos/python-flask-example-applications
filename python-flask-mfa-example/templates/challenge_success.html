@@ -31,17 +31,13 @@
         <div class="logged_in_div_right">
             <div class="flex_column">
                 <div class="flex-column">
-
-
-                </div>
-
-                <div class="flex-column">
-                    <div>
-                        <h1>SUCCESS BRUH!</h1>
-                        <p>User Verified: {{challenge['valid']}}</p>
+                    <div class="card">
+                        <h1>User Verified: {{valid}}</h1>
                         <p>Factor ID: {{challenge['authentication_factor_id']}}</p>
                         <p>Created At: {{challenge['created_at']}}</p>
+                        {%if type == 'sms'%}
                         <p>Expires At: {{challenge['expires_at']}}</p>
+                        {% endif %}
                     </div>
                 </div>
                 <a href="/"><button class='button'>Go Back Home</button></a>

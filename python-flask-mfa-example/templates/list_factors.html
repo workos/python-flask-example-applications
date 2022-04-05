@@ -35,13 +35,10 @@
                         <h2>Current MFA Factors</h2>
                     </div>
 
-                    <div>
+                    <div class="flex space-between">
                         <a href="/enroll_factor_details">
                             <button class="button button-outline button-sm">Enroll New Factor</button>
                         </a>
-                    </div>
-
-                    <div>
                         <a href="/clear_session">
                             <button class="button button-outline button-sm">Clear Factors</button>
                         </a>
@@ -57,6 +54,10 @@
                         factor['type']}}</a>
                 </div>
                 {% endfor %}
+                {% else %}
+                <div class="mt-20 card width_40vw">
+                    <p style="text-align: center; color: gray;">No Current Factors</p>
+                </div>
                 {% endif %}
             </div>
 

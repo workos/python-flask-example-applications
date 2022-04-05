@@ -22,6 +22,14 @@ body {
     bottom: 10px;
 }
 
+.card {
+    border: 1px solid #555555;
+    border-radius: 10px;
+    margin: 0px 15px 0px 15px;
+    padding: 25px 50px;
+    margin-bottom: 20px;
+}
+
 .flex {
     display: flex;
     justify-content: center;
@@ -48,6 +56,10 @@ body {
 
 .width_10vw {
     width: 10vw;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
 }
 
 .container_success {
@@ -212,6 +224,14 @@ div.text_box {
     width: 20vw;
     margin: 0px 15px 0px 15px;
     padding: 25px;
+}
+
+.card {
+    border: 1px solid #555555;
+    border-radius: 10px;
+    margin: 0px 15px 0px 15px;
+    padding: 25px 50px;
+    margin-bottom: 20px;
 }
 
 .qr_div {
