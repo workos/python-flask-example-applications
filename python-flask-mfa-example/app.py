@@ -18,8 +18,14 @@ workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
 @app.route("/")
 def home():
-    if session["factor_list"]:
+    if session.get("factor_list") == None:
+        session["factor_list"] = []
+        session["current_factor_qr"] = ''
+        session["phone_number"] = ''
+
+    if session["factor_list"] != None:
         return render_template("list_factors.html", factors=session["factor_list"])
+
     return render_template(
         "list_factors.html",
     )
@@ -48,8 +54,9 @@ def enroll_factor():
         new_factor = workos.client.mfa.enroll_factor(
             type=factor_type, totp_issuer=totp_issuer, totp_user=totp_user
         )
-
+    print(new_factor)
     session["factor_list"].append(new_factor)
+    print(session['factor_list'])
     session.modified = True
     return redirect("/")
 
@@ -120,8 +127,5 @@ def verify_factor():
 
 @app.route("/clear_session", methods=["GET"])
 def clear_session():
-    session["factor_list"] = []
-    session["challenge_id"] = ""
-    session["current_factor"] = ""
-    session["current_factor_type"] = ""
+    session.clear()
     return redirect("/")
