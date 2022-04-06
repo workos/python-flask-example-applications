@@ -20,6 +20,8 @@ workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 def home():
     if session.get("factor_list") == None:
         session["factor_list"] = []
+        session["current_factor_qr"] = ''
+        session["phone_number"] = ''
 
     if session["factor_list"] != None:
         return render_template("list_factors.html", factors=session["factor_list"])
