@@ -105,7 +105,7 @@ An example Flask application demonstrating how to use the [WorkOS MFA API](https
 
    TOTP: This type of authentication requires the use of a 3rd party authentication app (1Password, Authy, Google Authenticator, Microsoft Authenticator, Duo, etc). Scan the QR code from the Factor Details page to create the corresponding factor in the 3rd party app, then enter the time-based password when prompted in this MFA application.  
 
-   
+   TOTP NOTE - Since all storage is being done via browser cookies, only 1 TOTP type connection can be added at a time to this app due to limitations on the size of the cookies that browsers can store. This is due to the size of the QR code. 
 
 ## Need help?
 
