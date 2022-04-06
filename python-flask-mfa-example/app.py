@@ -18,7 +18,6 @@ workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
 @app.route("/")
 def home():
-    print(session)
     if session.get("factor_list") == None:
         session["factor_list"] = []
 
