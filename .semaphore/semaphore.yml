@@ -8,15 +8,17 @@ blocks:
   - name: 'Block #1'
     task:
       jobs:
-        - name: 'Job #1'
+        - name: checkout
           commands:
             - checkout
-        - name: upgrade pip
+        - name: sem-version python 2.7
+          commands:
+            - sem-version python 2.7
+        - name: python -m pip install --upgrade pip
           commands:
             - python -m pip install --upgrade pip
-        - name: install flake8
-          commands:
-            - python -m pip install flake8
+        - name: 'pip install -e .[dev]'
+          commands: []
 after_pipeline:
   task:
     jobs:
