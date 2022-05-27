@@ -11,3 +11,10 @@ blocks:
         - name: 'Job #1'
           commands:
             - checkout
+after_pipeline:
+  task:
+    jobs:
+      - name: run autopep8
+        commands:
+          - pip install autopep8
+          - autopep8
