@@ -14,7 +14,15 @@ blocks:
 after_pipeline:
   task:
     jobs:
-      - name: run autopep8
+      - name: sem-version python 3.7
         commands:
-          - apt install python3-autopep8
-          - autopep8
+          - sem-version python 3.7
+      - name: python -m pip install --upgrade pip
+        commands:
+          - python -m pip install --upgrade pip
+      - name: 'pip install -e .[dev]'
+        commands:
+          - 'pip install -e .[dev]'
+      - name: flake8 .
+        commands:
+          - flake8 .
