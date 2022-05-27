@@ -14,14 +14,14 @@ blocks:
 after_pipeline:
   task:
     jobs:
-      - name: apt install flake8
+      - name: install flake8
         commands:
-          - apt install flake8
+          - python -m pip install flake8
       - name: python -m pip install --upgrade pip
         commands:
           - python -m pip install --upgrade pip
       - name: flake8 .
         commands:
           - flake8 .
-      - name: ''
+      - name: Nameless 4
         commands: []
