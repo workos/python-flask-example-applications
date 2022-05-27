@@ -19,6 +19,9 @@ blocks:
             - python -m pip install --upgrade pip
         - name: 'pip install -e .[dev]'
           commands: []
+        - name: install flake8
+          commands:
+            - pip install flake8==2.5.0
 after_pipeline:
   task:
     jobs:
