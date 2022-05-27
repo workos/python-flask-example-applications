@@ -22,4 +22,4 @@ after_pipeline:
     jobs:
       - name: run flake8
         commands:
-          - python -m flake8 .
+          - flake8 .
