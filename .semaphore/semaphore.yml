@@ -11,17 +11,15 @@ blocks:
         - name: 'Job #1'
           commands:
             - checkout
+        - name: upgrade pip
+          commands:
+            - python -m pip install --upgrade pip
+        - name: install flake8
+          commands:
+            - python -m pip install flake8
 after_pipeline:
   task:
     jobs:
-      - name: install flake8
+      - name: run flake8
         commands:
-          - python -m pip install flake8
-      - name: python -m pip install --upgrade pip
-        commands:
-          - python -m pip install --upgrade pip
-      - name: flake8 .
-        commands:
-          - python -m flake8 .
-      - name: ''
-        commands: []
+          - flake8 .
