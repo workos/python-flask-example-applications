@@ -14,15 +14,14 @@ blocks:
 after_pipeline:
   task:
     jobs:
-      - name: sem-version python 3.7
+      - name: apt install flake8
         commands:
-          - sem-version python 3.7
+          - apt install flake8
       - name: python -m pip install --upgrade pip
         commands:
           - python -m pip install --upgrade pip
-      - name: 'pip install -e .[dev]'
-        commands:
-          - 'pip install -e .[dev]'
       - name: flake8 .
         commands:
           - flake8 .
+      - name: ''
+        commands: []
