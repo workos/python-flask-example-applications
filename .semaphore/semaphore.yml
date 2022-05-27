@@ -16,5 +16,5 @@ after_pipeline:
     jobs:
       - name: run autopep8
         commands:
-          - pip install autopep8
+          - apt install python3-autopep8
           - autopep8
