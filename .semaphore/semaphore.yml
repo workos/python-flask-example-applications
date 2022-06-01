@@ -8,23 +8,20 @@ blocks:
   - name: 'Block #1'
     task:
       jobs:
-        - name: python
+        - name: python3.8
           commands:
-            - sem-version python 2.7
+            - sem-version python 3.8
             - 'flake8 . --count --select=E9,F7,F82 --show-source --statistics'
             - flake8 . --count --exit-zero --max-complexity=10 --statistics
             - pytest
-        - name: python3 + codecov
+        - name: python3.9 + codecov
           commands:
-            - sem-version python 3.7
+            - sem-version python 3.9
             - 'flake8 . --count --select=E9,F7,F82 --show-source --statistics'
             - flake8 . --count --exit-zero --max-complexity=10 --statistics
             - pytest --cov-report xml --cov=workos
             - black --check .
             - 'bash <(curl -s https://codecov.io/bash)'
-        - name: install flake8
-          commands:
-            - python -m pip install flake8==2.5.0
       secrets:
         - name: codecov-workos-python
       prologue:
@@ -36,9 +33,3 @@ blocks:
           - sem-version python 3.7
           - python -m pip install --upgrade pip
           - 'pip install -e .[dev]'
-after_pipeline:
-  task:
-    jobs:
-      - name: run flake8
-        commands:
-          - flake8 .
