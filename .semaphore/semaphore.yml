@@ -1,0 +1,24 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Python Flask Example Apps
+    task:
+      jobs:
+        - name: python3.8 + codecov
+          commands:
+            - sem-version python 3.8
+            - 'flake8 . --count --select=E9,F7,F82 --show-source --statistics'
+            - flake8 . --count --exit-zero --max-complexity=10 --statistics
+            - pytest --cov-report xml --cov=workos
+            - black --check .
+            - 'bash <(curl -s https://codecov.io/bash)'
+      prologue:
+        commands:
+          - checkout
+          - sem-version python 3.8
+          - python -m pip install --upgrade pip
+          - 'pip install -e .[dev]'
