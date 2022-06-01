@@ -11,6 +11,8 @@ blocks:
         - name: python
           commands:
             - sem-version python 3.8
+            - 'flake8 . --count --select=E9,F7,F82 --show-source --statistics'
+            - flake8 . --count --exit-zero --max-complexity=10 --statistics
             - black --check .
             - pytest
       prologue:
@@ -19,3 +21,5 @@ blocks:
           - sem-version python 3.8
           - python -m pip install --upgrade pip
           - 'pip install -e .[dev]'
+          - pip install black
+          - pip install flake8
