@@ -5,15 +5,17 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 blocks:
-  - name: Python Example Apps
+  - name: Python Flask Example Apps
     task:
       jobs:
-        - name: python
+        - name: python lint
           commands:
             - sem-version python 3.8
             - 'flake8 . --count --select=E9,F7,F82 --show-source --statistics'
             - flake8 . --count --exit-zero --max-complexity=10 --statistics
             - black --check .
+        - name: pytest
+          commands:
             - pytest
       prologue:
         commands:
@@ -21,5 +23,5 @@ blocks:
           - sem-version python 3.8
           - python -m pip install --upgrade pip
           - 'pip install -e .[dev]'
-          - pip install black
           - pip install flake8
+          - pip install black
