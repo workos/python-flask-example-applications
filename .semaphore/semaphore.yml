@@ -27,9 +27,9 @@ blocks:
       prologue:
         commands:
           - checkout
-          - sem-version python 2.7
+          - sem-version python 3.8
           - python -m pip install --upgrade pip
           - 'pip install -e .[dev]'
-          - sem-version python 3.7
+          - sem-version python 3.9
           - python -m pip install --upgrade pip
           - 'pip install -e .[dev]'
