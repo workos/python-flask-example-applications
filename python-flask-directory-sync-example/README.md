@@ -84,7 +84,7 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
    flask run
    ```
 
-   If you are using Mac OS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
+   If you are using macOS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
    ```bash
    (env) $ flask run -p 5001
    ```
