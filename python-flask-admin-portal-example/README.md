@@ -65,7 +65,7 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    (env) $ echo $WORKOS_CLIENT_ID
    ```
 
-9. Update the Admin Portal Redirect Link in the "Configuration" page of your WorkOS Dashboard. The URL should be http://localhost:5000. If you are using Mac OS Monterey, set this to localhost:5001. 
+9. Update the Admin Portal Redirect Link in the "Configuration" page of your WorkOS Dashboard. The URL should be http://localhost:5000. If you are using macOS Monterey, set this to localhost:5001. 
 
 After an Admin Portal user creates an SSO connection using the Admin Portal, they need to be redirected to a webpage within your application (usually this webpage confirms successful creation of the connection). To configure which webpage this is, enter the webpage’s URL in the Configuration section of your WorkOS dashboard under the “Admin Portal Redirect Link” header. For production usage this URL must begin with HTTPS, but for development purposes the URL can begin with HTTP.
 
@@ -76,7 +76,7 @@ After an Admin Portal user creates an SSO connection using the Admin Portal, the
    (env) $ flask run
    ```
 
-   If you are using Mac OS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
+   If you are using macOS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
    ```bash
    (env) $ flask run -p 5001
    ```

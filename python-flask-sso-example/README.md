@@ -74,7 +74,7 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    (env) $ flask run
    ```
 
-   If you are using Mac OS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
+   If you are using macOS Monterey, port 5000 is not available and you'll need to start the app on a different port with this slightly different command. 
    ```bash
    (env) $ flask run -p 5001
    ```
