@@ -15,11 +15,10 @@ workos.base_api_url = "http://localhost:5000/" if DEBUG else workos.base_api_url
 
 
 def to_pretty_json(value):
-    return json.dumps(value, sort_keys=True,
-                      indent=4)
+    return json.dumps(value, sort_keys=True, indent=4)
 
 
-app.jinja_env.filters['tojson_pretty'] = to_pretty_json
+app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 
 @app.route("/")

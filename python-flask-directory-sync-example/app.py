@@ -22,11 +22,10 @@ directory_id = os.getenv("DIRECTORY_ID")
 
 
 def to_pretty_json(value):
-    return json.dumps(value, sort_keys=True,
-                      indent=4)
+    return json.dumps(value, sort_keys=True, indent=4)
 
 
-app.jinja_env.filters['tojson_pretty'] = to_pretty_json
+app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 
 @app.route("/")
@@ -70,8 +69,7 @@ def webhooks():
         payload = request.get_data()
         sig_header = request.headers["WorkOS-Signature"]
         response = workos_client.webhooks.verify_event(
-            payload=payload, sig_header=sig_header, secret=os.getenv(
-                "WEBHOOKS_SECRET")
+            payload=payload, sig_header=sig_header, secret=os.getenv("WEBHOOKS_SECRET")
         )
 
         message = json.dumps(response)
