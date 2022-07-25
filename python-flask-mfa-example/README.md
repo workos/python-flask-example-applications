@@ -1,5 +1,5 @@
 # python-flask-mfa-example
-An example Flask application demonstrating how to use the [WorkOS MFA API](https://workos.com/docs/mfa/guide) using the [Python SDK](https://github.com/workos-inc/workos-python) to authenticate users.
+An example Flask application demonstrating how to use the [WorkOS MFA API](https://workos.com/docs/mfa/guide) using the [Python SDK](https://github.com/workos/workos-python) to authenticate users.
 
 ## Prerequisites
 - Python 3.6+
