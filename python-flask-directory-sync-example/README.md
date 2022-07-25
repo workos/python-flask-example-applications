@@ -1,5 +1,5 @@
 # python-flask-directory-sync-example
-A basic Flask app that uses the [WorkOS Python SDK](https://github.com/workos-inc/workos-python) to support Directory Sync.
+A basic Flask app that uses the [WorkOS Python SDK](https://github.com/workos/workos-python) to support Directory Sync.
 
 ## Prerequisites
 - Python 3.6+
@@ -16,14 +16,14 @@ If you get stuck, please reach out to us at support@workos.com so we can help.
 1. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
-   $ git clone https://github.com/workos-inc/python-flask-example-applications.git
+   $ git clone https://github.com/workos/python-flask-example-applications.git
    ```
 
    or
 
    ```bash
    # SSH
-   $ git clone git@github.com:workos-inc/python-flask-example-applications.git
+   $ git clone git@github.com:workos/python-flask-example-applications.git
    ```
 
 2. Navigate to the Directory Sync example app within the cloned repo.

@@ -1,5 +1,5 @@
 # python-flask-admin-portal-example
-An example Flask application demonstrating how to use the [WorkOS Python SDK](https://github.com/workos-inc/workos-python) so your customers can access the WorkOS Admin Portal from your application.
+An example Flask application demonstrating how to use the [WorkOS Python SDK](https://github.com/workos/workos-python) so your customers can access the WorkOS Admin Portal from your application.
 
 ## Prerequisites
 - Python 3.6+
@@ -9,14 +9,14 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 1. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
-   $ git clone https://github.com/workos-inc/python-flask-example-applications.git
+   $ git clone https://github.com/workos/python-flask-example-applications.git
    ```
 
    or
 
    ```bash
    # SSH
-   $ git clone git@github.com:workos-inc/python-flask-example-applications.git
+   $ git clone git@github.com:workos/python-flask-example-applications.git
    ```
 
 2. Navigate to the Admin Portal example app within the cloned repo.

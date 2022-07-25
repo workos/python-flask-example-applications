@@ -44,6 +44,10 @@ body {
     width: 75%;
 }
 
+.width-40vw {
+    width: 40vw;
+}
+
 .container_success {
     display: flex;
     flex-direction: column;
@@ -187,9 +191,7 @@ h1 {
 
 div.text_box {
     background-color: #f9f9fb;
-    /* border-radius: 5px;
-    border: 2px solid #6363f1; */
-    width: 75%;
+    width: 40vw;
     max-height: 30vh;
     padding: 10px;
     word-wrap: break-word;
@@ -244,4 +246,8 @@ div.text_box {
     background-color: #f9f9fb;
     border: 2px solid #f9f9fb;
     color: #a6a4a4;
+}
+
+pre.prettyprint {
+    border: none !important;
 }

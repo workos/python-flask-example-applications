@@ -42,18 +42,21 @@
         </div>
         <div class="logged_in_div_right">
             <div class="flex_column">
-                <div class="flex width-75 space-between">
+                <div class="flex width-40vw space-between">
                     <h2>Raw Profile Response Details</h2>
                     <a href="/logout"><button class="button button-outline">Log Out</button></a>
                 </div>
 
                 <div class="text_box">
-                    <p>{{raw_profile}}</p>
+                    <pre class="prettyprint">
+                        {{raw_profile|tojson_pretty}}
+                    </pre>
                 </div>
             </div>
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </body>
 
 </html>

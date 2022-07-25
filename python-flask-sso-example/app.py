@@ -1,3 +1,4 @@
+import json
 import os
 
 from flask import Flask, session, redirect, render_template, request, url_for
@@ -17,12 +18,19 @@ workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
 # Enter Connection ID here
 
-CUSTOMER_CONNECTION_ID = "xxx"
+CUSTOMER_CONNECTION_ID = ""
+
+
+def to_pretty_json(value):
+    return json.dumps(value, sort_keys=True, indent=4)
+
+
+app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 
 @app.route("/")
 def login():
-    if session:
+    if session["raw_profile"]:
         return render_template(
             "login_successful.html",
             first_name=session["first_name"],
@@ -52,13 +60,11 @@ def auth_callback():
     session["first_name"] = p_profile["profile"]["first_name"]
     session["raw_profile"] = p_profile["profile"]
     session["session_id"] = p_profile["profile"]["id"]
-    print("session", session)
     return redirect("/")
 
 
 @app.route("/logout")
 def logout():
-    # remove the username from the session if it is there
     session.clear()
-    print(session)
+    session["raw_profile"] = ""
     return redirect("/")

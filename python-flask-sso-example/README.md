@@ -1,5 +1,5 @@
 # python-flask-sso-example
-An example Flask application demonstrating how to use the [WorkOS Python SDK](https://github.com/workos-inc/workos-python) to authenticate users via SSO.
+An example Flask application demonstrating how to use the [WorkOS Python SDK](https://github.com/workos/workos-python) to authenticate users via SSO.
 
 ## Prerequisites
 - Python 3.6+
@@ -10,14 +10,14 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 1. Clone the main git repo for these Python example apps using your preferred secure method (HTTPS or SSH).
    ```bash
    # HTTPS
-   $ git clone https://github.com/workos-inc/python-flask-example-applications.git
+   $ git clone https://github.com/workos/python-flask-example-applications.git
    ```
 
    or
 
    ```bash
    # SSH
-   $ git clone git@github.com:workos-inc/python-flask-example-applications.git
+   $ git clone git@github.com:workos/python-flask-example-applications.git
    ```
 
 2. Navigate to the sso app within the cloned repo.
