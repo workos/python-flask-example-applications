@@ -27,7 +27,7 @@ def to_pretty_json(value):
 
 app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
-
+@app.route("/")
 def login():
     try:
         return render_template(
