@@ -220,12 +220,6 @@ div.text_box {
 
 .logged_in_nav img {
     height: 50px;
-    border-radius: 50%;
-    border: 2px solid #2f2e2e;
-}
-
-.logged_in_nav img:hover {
-    border: 2px solid #555555;
 }
 
 .nav-item {
@@ -287,4 +281,12 @@ pre.prettyprint {
 .qr_code {
     width: 7vw;
     max-width: 100px;
+}
+
+.code-input {
+    width: 75px;
+    height: 100px;
+    margin: 0px 5px 30px 5px;
+    font-size: 60px;
+    color: darkslategray;
 }

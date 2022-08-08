@@ -110,7 +110,13 @@ def challenge_factor():
 
 @app.route("/verify_factor", methods=["POST"])
 def verify_factor():
-    code = request.form["code"]
+    def buildCode(code_values):
+        code = ""
+        for x in code_values.values():
+            code += x
+        return code
+
+    code = buildCode(request.form)
     challenge_id = session["challenge_id"]
     verify_factor = workos.client.mfa.verify_factor(
         authentication_challenge_id=challenge_id,
