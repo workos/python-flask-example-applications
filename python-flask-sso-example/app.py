@@ -27,16 +27,15 @@ def to_pretty_json(value):
 
 app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
-
 @app.route("/")
 def login():
-    if session["raw_profile"]:
+    try:
         return render_template(
             "login_successful.html",
             first_name=session["first_name"],
             raw_profile=session["raw_profile"],
         )
-    else:
+    except KeyError:
         return render_template("login.html")
 
 
