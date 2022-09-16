@@ -23,10 +23,6 @@ workos.api_key = os.getenv("WORKOS_API_KEY")
 workos.project_id = os.getenv("WORKOS_CLIENT_ID")
 workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
-# Enter Connection ID here
-
-CUSTOMER_CONNECTION_ID = "conn_01G90XQ07953ZADRSFVF1YFSXP"
-
 
 def to_pretty_json(value):
     return json.dumps(value, sort_keys=True, indent=4)

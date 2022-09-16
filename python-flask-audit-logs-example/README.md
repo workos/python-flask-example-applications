@@ -1,4 +1,4 @@
-# python-flask-sso-example
+# python-flask-audit-logs-example
 
 An example Flask application demonstrating how to use the [WorkOS Python SDK](https://github.com/workos/workos-python) to send and retrieve Audit Log events. This example is not meant to show a real-world example of an Audit Logs implementation, but rather to show concrete examples of how events can be sent using the Python SDK.
 
@@ -22,10 +22,10 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    $ git clone git@github.com:workos/python-flask-example-applications.git
    ```
 
-2. Navigate to the sso app within the cloned repo.
+2. Navigate to the Audit Logs app within the cloned repo.
 
    ```bash
-   $ cd python-flask-example-applications/python-audit-logs-example
+   $ cd python-flask-example-applications/python-flask-audit-logs-example
    ```
 
 3. Create and source a Python virtual environment. You should then see `(env)` at the beginning of your command-line prompt.
@@ -45,9 +45,9 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
 5. Obtain and make note of the following values. In the next step, these will be set as environment variables.
 
    - Your [WorkOS API key](https://dashboard.workos.com/api-keys)
-   - Your [SSO-specific, WorkOS Client ID](https://dashboard.workos.com/configuration)
+   - Your [WorkOS Client ID](https://dashboard.workos.com/configuration)
 
-6. Ensure you're in the root directory for the example app, `python-flask-sso-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
+6. Ensure you're in the root directory for the example app, `python-flask-audit-logs-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
 
    ```bash
    (env) $ touch .env
@@ -77,9 +77,7 @@ An example Flask application demonstrating how to use the [WorkOS Python SDK](ht
    (env) $ echo $WORKOS_CLIENT_ID
    ```
 
-9. In `python-flask-sso-example/app.py` change the `CUSTOMER_CONNECTION_ID` string value to the connection you will be testing the login for. This can be found in your WorkOS Dashboard.
-
-10. The final setup step is to start the server.
+9. The final setup step is to start the server.
 
 ```bash
 (env) $ flask run
@@ -108,7 +106,7 @@ You can stop the local Flask server for now by entering `CTRL + c` on the comman
 
 ## Audit Logs Setup with WorkOS
 
-11. Follow the [Audit Logs configuration steps](https://workos.com/docs/audit-logs/emit-an-audit-log-event/sign-in-to-your-workos-dashboard-account-and-configure-audit-log-event-schemas) to set up the following 5 events that are sent with this example:
+10. Follow the [Audit Logs configuration steps](https://workos.com/docs/audit-logs/emit-an-audit-log-event/sign-in-to-your-workos-dashboard-account-and-configure-audit-log-event-schemas) to set up the following 5 events that are sent with this example:
 
 1. Action title: "user.signed_in" | Target type: "team"
 1. Action title: "user.logged_out" | Target type: "team"
