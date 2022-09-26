@@ -37,6 +37,7 @@ def index():
         return render_template(
             "send_events.html",
             organization_id=session["organization_id"],
+            org_name=session["organization_name"],
         )
     except KeyError:
         return render_template("login.html")
@@ -49,6 +50,9 @@ def set_org():
     organization_set = workos.client.audit_logs.create_event(
         organization_id, user_organization_set
     )
+    org = workos.client.organizations.get_organization(organization_id)
+    org_name = org["name"]
+    session["organization_name"] = org_name
     return redirect("/")
 
 
@@ -70,7 +74,11 @@ def send_event():
 @app.route("/export_events", methods=["POST", "GET"])
 def export_events():
     organization_id = session["organization_id"]
-    return render_template("export_events.html", organization_id=organization_id)
+    return render_template(
+        "export_events.html",
+        organization_id=organization_id,
+        org_name=session["organization_name"],
+    )
 
 
 @app.route("/get_events", methods=["POST", "GET"])

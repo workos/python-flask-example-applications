@@ -32,10 +32,22 @@ a:visited {
     bottom: 10px;
 }
 
+.card {
+    border: 1px solid #9a9999;
+    border-radius: 10px;
+    margin: 0px 15px 0px 15px;
+    padding: 25px 50px;
+    margin-bottom: 20px;
+}
+
 .flex {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex-start {
+    justify-content: start;
 }
 
 .flex_column {
@@ -75,6 +87,10 @@ a:visited {
 
 .margin-y-30 {
     margin: 30px 0px;
+}
+
+.margin-b-25 {
+    margin-bottom: 25px;
 }
 
 .container_success {
