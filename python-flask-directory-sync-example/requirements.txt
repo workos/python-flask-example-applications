@@ -1,5 +1,5 @@
 
 Flask>=1.1.2
-workos>=1.16.0
+workos>=1.20.2
 python-dotenv
 flask_socketio

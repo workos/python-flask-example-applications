@@ -18,6 +18,7 @@ if __name__ == "__main__":
 
 workos.api_key = os.getenv("WORKOS_API_KEY")
 workos.base_api_url = "http://localhost:5000/" if DEBUG else workos.base_api_url
+workos.client_id = os.getenv("WORKOS_CLIENT_ID")
 directory_id = os.getenv("DIRECTORY_ID")
 
 
@@ -30,13 +31,16 @@ app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 @app.route("/")
 def home():
-    directories = workos.client.directory_sync.list_directories()
-    print(directories)
-    directoryNames = []
-    for i in directories["data"]:
-        directoryNames.append(i["name"])
-    print(directoryNames)
-    return render_template("home.html", directories=directories)
+    before = request.args.get("before")
+    after = request.args.get("after")
+    directories = workos.client.directory_sync.list_directories(
+        before=before, after=after, limit=5, order=None
+    )
+    before = directories["listMetadata"]["before"]
+    after = directories["listMetadata"]["after"]
+    return render_template(
+        "home.html", directories=directories["data"], before=before, after=after
+    )
 
 
 @app.route("/directory")
@@ -66,7 +70,7 @@ def directory_groups():
 @app.route("/webhooks", methods=["GET", "POST"])
 def webhooks():
     if request.data:
-        payload = request.get_data()
+        payload = request.get_data().decode("utf-8")
         sig_header = request.headers["WorkOS-Signature"]
         response = workos_client.webhooks.verify_event(
             payload=payload, sig_header=sig_header, secret=os.getenv("WEBHOOKS_SECRET")
