@@ -39,7 +39,7 @@
         </div>
         <div class="logged_in_div_right">
             <div class="flex_column">
-                <h2>Raw Users Object Details</h2>
+                <h2>User Details</h2>
 
                 {% if users['data']|length > 0 %}
                 <div class="text_box">
@@ -49,9 +49,10 @@
                         <li class="even">{{user['first_name']}} {{user['last_name']}}: <code>{{user['username']}}</code>
                         </li>
                         {% else %}
-                        <li>{{user['first_name']}} {{user['last_name']}}: <code>{{user['username']}}</code>
+                        <li>{{user['first_name']}} {{user['last_name']}}: <code>{{user['username']}}</code></li>
                             {% endif %}
                             {% endfor %}
+                        
                     </ul>
                 </div>
                 {% else %}

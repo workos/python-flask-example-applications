@@ -18,7 +18,7 @@ workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
 # Enter Connection ID here
 
-CUSTOMER_CONNECTION_ID = "conn_01G90XQ07953ZADRSFVF1YFSXP"
+CUSTOMER_CONNECTION_ID = ""
 
 
 def to_pretty_json(value):
@@ -54,10 +54,6 @@ def auth():
 
 @app.route("/auth/callback")
 def auth_callback():
-
-    print(request.args.get("error"))
-    print(request.args.get("error_description"))
-    print(request.args.get("error_uri"))
 
     code = request.args.get("code")
     profile = workos.client.sso.get_profile_and_token(code)
