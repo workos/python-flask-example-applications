@@ -56,10 +56,8 @@ def auth():
 def auth_callback():
 
     code = request.args.get("code")
-    print(code)
     profile = workos.client.sso.get_profile_and_token(code)
     p_profile = profile.to_dict()
-    print(p_profile)
     session["first_name"] = p_profile["profile"]["first_name"]
     session["raw_profile"] = p_profile["profile"]
     session["session_id"] = p_profile["profile"]["id"]
