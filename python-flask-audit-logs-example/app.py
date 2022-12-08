@@ -105,6 +105,14 @@ def get_events():
 
     return redirect("export_events")
 
+@app.route("/events", methods=["GET"])
+def events():
+    link = workos.client.portal.generate_link(
+        organization=session["organization_id"], intent="audit_logs"
+    )
+    
+    return redirect(link["link"])
+
 
 @app.route("/logout")
 def logout():
