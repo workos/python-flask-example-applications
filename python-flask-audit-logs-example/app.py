@@ -11,17 +11,22 @@ from audit_log_events import (
     user_organization_deleted,
     user_organization_set,
 )
+from flask_lucide import Lucide
+
 
 # Flask Setup
 DEBUG = False
 app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY")
 
-# WorkOS Setup
+lucide = Lucide(app)
 
+
+# WorkOS Setup
 workos.api_key = os.getenv("WORKOS_API_KEY")
 workos.project_id = os.getenv("WORKOS_CLIENT_ID")
 workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
+
 
 
 def to_pretty_json(value):
@@ -33,9 +38,14 @@ app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 @app.route("/", methods=["POST", "GET"])
 def index():
+    link = workos.client.portal.generate_link(
+        organization=session["organization_id"], intent="audit_logs"
+    )
+    print(link["link"])
     try:
         return render_template(
             "send_events.html",
+            link=link["link"],
             organization_id=session["organization_id"],
             org_name=session["organization_name"],
         )
@@ -53,6 +63,7 @@ def set_org():
     org = workos.client.organizations.get_organization(organization_id)
     org_name = org["name"]
     session["organization_name"] = org_name
+    print(session)
     return redirect("/")
 
 
@@ -75,7 +86,7 @@ def send_event():
 def export_events():
     organization_id = session["organization_id"]
     return render_template(
-        "export_events.html",
+        "send_events.html",
         organization_id=organization_id,
         org_name=session["organization_name"],
     )
