@@ -121,15 +121,15 @@ def get_events():
     event_type = request.form["event"]
 
     if event_type == "generate_csv":
-        if request.form["filter-actions"] is not "":
+        if request.form["filter-actions"] != "":
             actions = request.form["filter-actions"]
         else:
             actions = None
-        if request.form["filter-actors"] is not "":
+        if request.form["filter-actors"] != "":
             actors = request.form["filter-actors"]
         else:
             actors = None
-        if request.form["filter-targets"] is not "":
+        if request.form["filter-targets"] != "":
             targets = request.form["filter-targets"]
         else:
             targets = None
