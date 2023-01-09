@@ -81,12 +81,12 @@ a:visited {
   width: 15vw;
 }
 
-.width-100p {
-  width: 100%;
+.width-150px {
+  width: 150px;
 }
 
-.height-50vh {
-  height: 50vh;
+.height-45vh {
+  height: 45vh;
 }
 
 .margin-y-15 {
@@ -187,7 +187,6 @@ a:visited {
 .button-outline {
   background-color: #f9f9fb;
   color: #6363f1;
-  padding: 8px 16px;
 }
 
 .button:hover,
@@ -195,6 +194,10 @@ a:visited {
   background-color: #555555;
   border: 2px solid #555555;
   color: white;
+}
+
+.button-outline p {
+  margin: 0;
 }
 
 .sales-button {
@@ -336,13 +339,21 @@ button.box p {
 }
 
 .text-input {
-  border: 1px solid #555555;
-  border-radius: 10px;
-  margin: 20px 0px 7px 0px;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  margin: 0px 0px 15px 0px;
   padding: 5px;
   height: 35px;
   width: 18vw;
-  text-align: center;
+  text-align: left;
+}
+
+.event-form-input-group {
+  margin-left: 10px;
+}
+
+.event-form-input-group label {
+  color: #29363d;
 }
 
 pre.prettyprint {
