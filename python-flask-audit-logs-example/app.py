@@ -53,8 +53,6 @@ def index():
         organizations = workos.client.organizations.list_organizations(
             before=before, after=after, limit=5, order=None
         )
-        print(organizations["data"])
-
         before = organizations["listMetadata"]["before"]
         after = organizations["listMetadata"]["after"]
         return render_template(
