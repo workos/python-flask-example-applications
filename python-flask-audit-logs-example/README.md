@@ -106,13 +106,10 @@ You can stop the local Flask server for now by entering `CTRL + c` on the comman
 
 ## Audit Logs Setup with WorkOS
 
-10. Follow the [Audit Logs configuration steps](https://workos.com/docs/audit-logs/emit-an-audit-log-event/sign-in-to-your-workos-dashboard-account-and-configure-audit-log-event-schemas) to set up the following 5 events that are sent with this example:
+10. Follow the [Audit Logs configuration steps](https://workos.com/docs/audit-logs/emit-an-audit-log-event/sign-in-to-your-workos-dashboard-account-and-configure-audit-log-event-schemas) to set up the following 2 events that are sent with this example:
 
-Action title: "user.signed_in" | Target type: "team"
-Action title: "user.logged_out" | Target type: "team"
 Action title: "user.organization_set" | Target type: "team"
 Action title: "user.organization_deleted" | Target type: "team"
-Action title: "user.connection_deleted" | Target type: "team"
 
 11. Next, take note of the Organization ID for the Org which you will be sending the Audit Log events for. This ID gets entered into the splash page of the example application.
 

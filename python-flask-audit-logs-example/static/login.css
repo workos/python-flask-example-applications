@@ -8,7 +8,7 @@ a {
 }
 
 a:visited {
-  color: inherit;
+  color: #6363f1;
 }
 
 .container_login {
@@ -16,7 +16,6 @@ a:visited {
   flex-direction: column;
   justify-content: center;
   margin: auto;
-  width: 30%;
   height: 90vh;
 }
 
@@ -50,6 +49,10 @@ a:visited {
   align-items: flex-start;
 }
 
+.flex-end {
+  justify-content: end;
+}
+
 .flex_column {
   display: flex;
   flex-direction: column;
@@ -73,7 +76,7 @@ a:visited {
   width: 11vw;
 }
 
-.width-40vw {
+.width-65vw {
   width: 65vw;
 }
 
@@ -87,6 +90,10 @@ a:visited {
 
 .height-45vh {
   height: 45vh;
+}
+
+.height-65vh {
+  height: 65vh;
 }
 
 .margin-y-15 {
@@ -115,6 +122,12 @@ a:visited {
 
 .heading_text_div {
   align-self: center;
+}
+
+.sub-heading {
+  padding: 0px 0px 10px 0px;
+  margin: 0px;
+  color: #6363f1;
 }
 
 .button {
@@ -291,7 +304,7 @@ button.box p {
 
 .logged_in_div_left_title {
   width: 15vw;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .page-title {
@@ -401,6 +414,40 @@ pre.prettyprint {
 
 .tab-content {
   margin-left: 65px;
+}
+
+th {
+  text-align: center;
+  font-weight: bolder;
+  font-size: large;
+}
+
+tr {
+  text-align: center;
+  border-bottom: 1px solid #ebebf2;
+}
+
+tr:hover {
+  background-color: #ebebf2;
+}
+
+table,
+td {
+  padding: 5px 40px;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 25px 0px;
+}
+
+th {
+  background-color: #e3e3e3;
+  border-right: none;
+  border-left: none;
+  padding: 15px 40px;
 }
 
 #snackbar {

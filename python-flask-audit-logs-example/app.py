@@ -33,8 +33,7 @@ app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-
-    try:
+    try:        
         link = workos.client.portal.generate_link(
             organization=session["organization_id"], intent="audit_logs"
         )
@@ -49,12 +48,26 @@ def index():
             today_iso=today.isoformat(),
         )
     except KeyError:
-        return render_template("login.html")
+        before = request.args.get("before")
+        after = request.args.get("after")
+        organizations = workos.client.organizations.list_organizations(
+            before=before, after=after, limit=5, order=None
+        )
+        print(organizations["data"])
+
+        before = organizations["listMetadata"]["before"]
+        after = organizations["listMetadata"]["after"]
+        return render_template(
+            "login.html",
+            organizations=organizations["data"], 
+            before=before, 
+            after=after
+        )
 
 
 @app.route("/set_org", methods=["POST", "GET"])
 def set_org():
-    organization_id = request.form["org"]
+    organization_id = request.args.get("id")
     session["organization_id"] = organization_id
     organization_set = workos.client.audit_logs.create_event(
         organization_id, user_organization_set
