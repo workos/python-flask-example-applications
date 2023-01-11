@@ -12,28 +12,18 @@
         </div>
         <hr style="height:0.5px;width:75%;">
         <div class="flex flex_column success-buttons">
-            <div class="flex sidebar-button">
-                <div>{{ lucide.icon('settings-2', stroke_width=1) }}</div>
-                <div>
-                    <p>Dashboard</p>
+            <a href="/logout">
+                <div class="flex sidebar-button">
+                    <div>{{ lucide.icon('settings-2', stroke_width=1) }}</div>
+                    <div>
+                        <p>Organizations</p>
+                    </div>
                 </div>
-            </div>
-            <div class="flex sidebar-button">
-                <div>{{ lucide.icon('user', stroke_width=1) }}</div>
-                <div>
-                    <p>User Roles</p>
-                </div>
-            </div>
-            <div class="flex sidebar-button audit-logs">
+            </a>
+            <div class="flex sidebar-button selected">
                 <div>{{ lucide.icon('edit', stroke_width=1) }}</div>
                 <div>
                     <p>Audit Logs</p>
-                </div>
-            </div>
-            <div class="flex sidebar-button">
-                <div>{{ lucide.icon('wrench', stroke_width=1) }}</div>
-                <div>
-                    <p>Settings</p>
                 </div>
             </div>
         </div>
@@ -70,7 +60,7 @@
                     <a href="/logout"><button class="button">Change Org</button></a>
                 </div>                
             </div>
-            <div class="card width-65vw height-45vh">
+            <div class="card events-card width-65vw height-45vh">
                 <div class="flex flex-start">
                     <div class="flex-column flex-start">
                         <div data-tab-target="#send-events" name='#send-events' class="flex space-evenly width-11vw content-button tab">
