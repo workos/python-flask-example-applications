@@ -2,3 +2,4 @@ Flask==2.0.3
 Jinja2==3.1.1
 workos>=1.20.2
 python-dotenv
+flask-lucide==0.2.0
