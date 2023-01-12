@@ -4,11 +4,13 @@ import workos
 from workos import client as workos_client
 from flask_socketio import SocketIO, emit
 import json
+from flask_lucide import Lucide
 
 
 DEBUG = False
 app = Flask(__name__)
 
+lucide = Lucide(app)
 
 app.config["SECRET_KEY"] = "secret!"
 socketio = SocketIO(app)
