@@ -170,7 +170,7 @@ def get_events():
 @app.route("/events", methods=["GET"])
 def events():
     link = workos.client.portal.generate_link(
-        organization=session["organization_id"], intent="audit_logs"
+        organization=session["organization_id"], intent=request.args.get("intent")
     )
 
     return redirect(link["link"])
