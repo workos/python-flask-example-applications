@@ -26,17 +26,6 @@ def hello_world():
     return render_template("login.html")
 
 
-@app.route("/callback")
-def callback():
-    code = request.args.get("code")
-    profile_and_token = workos_client.sso.get_profile_and_token(code)
-
-    # Use the information in `profile` for further business logic.
-    profile = profile_and_token.profile
-
-    return redirect("/")
-
-
 @app.route("/passwordless_auth", methods=["POST"])
 def passwordless_auth():
     email = request.form["email"]
