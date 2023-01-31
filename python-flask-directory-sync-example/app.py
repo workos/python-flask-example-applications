@@ -72,7 +72,7 @@ def directory_groups():
 @app.route("/webhooks", methods=["GET", "POST"])
 def webhooks():
     if request.data:
-        payload = request.get_data().decode("utf-8")
+        payload = request.get_data()
         sig_header = request.headers["WorkOS-Signature"]
         response = workos_client.webhooks.verify_event(
             payload=payload, sig_header=sig_header, secret=os.getenv("WEBHOOKS_SECRET")
