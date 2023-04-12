@@ -1,5 +1,5 @@
 import os
-from flask import Flask, session, redirect, render_template, request, url_for
+from flask import Flask, session, redirect, render_template, request, url_for, jsonify
 import json
 import workos
 
@@ -36,29 +36,37 @@ def enroll_factor_details():
     return render_template("enroll_factor.html")
 
 
-@app.route("/enroll_factor", methods=["POST"])
-def enroll_factor():
+@app.route("/enroll_sms_factor", methods=["POST"])
+def enroll_sms_factor():
     factor_type = request.form.get("type")
-    totp_issuer = request.form.get("totp_issuer")
-    totp_user = request.form.get("totp_user")
     phone_number = request.form.get("phone_number")
 
-    if factor_type == "sms":
-        factor_type = "sms"
-        new_factor = workos.client.mfa.enroll_factor(
-            type=factor_type, phone_number=phone_number
-        )
+    new_factor = workos.client.mfa.enroll_factor(
+        type=factor_type, 
+        phone_number=phone_number
+    )
 
-    if factor_type == "totp":
-        factor_type = "totp"
-        new_factor = workos.client.mfa.enroll_factor(
-            type=factor_type, totp_issuer=totp_issuer, totp_user=totp_user
-        )
-    print(new_factor)
     session["factor_list"].append(new_factor)
-    print(session["factor_list"])
     session.modified = True
     return redirect("/")
+
+
+@app.route('/enroll_totp_factor', methods=['POST'])
+def enroll_totp_factor():
+    data = request.get_json()
+    type = data['type']
+    issuer = data['issuer']
+    user = data['user']
+
+    new_factor = workos.client.mfa.enroll_factor(
+        type=type,
+        totp_issuer=issuer,
+        totp_user=user
+    )
+
+    session['factor_list'].append(new_factor)
+    session.modified = True
+    return jsonify(new_factor['totp']['qr_code'])
 
 
 @app.route("/factor_detail")
@@ -72,9 +80,6 @@ def factor_detail():
         if factor["type"] == "sms":
             phone_number = factor["sms"]["phone_number"]
 
-        if factor["type"] == "totp":
-            session["current_factor_qr"] = factor["totp"]["qr_code"]
-
     session["current_factor"] = fullFactor["id"]
     session["current_factor_type"] = fullFactor["type"]
     session.modified = True
@@ -82,7 +87,6 @@ def factor_detail():
         "factor_detail.html",
         factor=fullFactor,
         phone_number=phone_number,
-        qr_code=session["current_factor_qr"],
     )
 
 
