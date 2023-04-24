@@ -18,7 +18,7 @@ workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
 # Enter Connection ID here
 
-CUSTOMER_CONNECTION_ID = ""
+CUSTOMER_ORGANIZATION_ID = ""
 
 
 def to_pretty_json(value):
@@ -40,14 +40,22 @@ def login():
         return render_template("login.html")
 
 
-@app.route("/auth")
+@app.route("/auth", methods=["POST"])
 def auth():
 
-    authorization_url = workos.client.sso.get_authorization_url(
-        redirect_uri=url_for("auth_callback", _external=True),
-        state={},
-        connection=CUSTOMER_CONNECTION_ID,
-    )
+    login_type = request.form.get("login_method")
+
+    params = {"redirect_uri": url_for("auth_callback", _external=True), "state": {}}
+
+    if login_type == "saml":
+        print("saml")
+        params["organization"] = CUSTOMER_ORGANIZATION_ID
+    else:
+        params["provider"] = login_type
+
+    print(params)
+
+    authorization_url = workos.client.sso.get_authorization_url(**params)
 
     return redirect(authorization_url)
 
