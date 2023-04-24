@@ -47,13 +47,10 @@ def auth():
 
     params = {"redirect_uri": url_for("auth_callback", _external=True), "state": {}}
 
-    if login_type == "saml":
-        print("saml")
+    if login_type == "saml":        
         params["organization"] = CUSTOMER_ORGANIZATION_ID
     else:
         params["provider"] = login_type
-
-    print(params)
 
     authorization_url = workos.client.sso.get_authorization_url(**params)
 
