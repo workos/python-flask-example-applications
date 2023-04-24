@@ -16,7 +16,7 @@ workos.api_key = os.getenv("WORKOS_API_KEY")
 workos.project_id = os.getenv("WORKOS_CLIENT_ID")
 workos.base_api_url = "http://localhost:7000/" if DEBUG else workos.base_api_url
 
-# Enter Connection ID here
+# Enter Organization ID here
 
 CUSTOMER_ORGANIZATION_ID = ""
 
