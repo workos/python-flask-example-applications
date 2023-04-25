@@ -52,12 +52,6 @@
                             <p>Updated At: <code>{{factor['updated_at']}}</code></p>
                         </div>
                     </div>
-                    {% if factor['type'] == 'totp' %}
-                    <div class="qr_div">
-                        <img class="qr_code" src="{{qr_code}}" alt="qr_code">
-                    </div>
-
-                    {% endif %}
                 </div>
 
                 <div class="flex-column">
