@@ -38,8 +38,8 @@ def home():
     directories = workos.client.directory_sync.list_directories(
         before=before, after=after, limit=5, order=None
     )
-    before = directories["listMetadata"]["before"]
-    after = directories["listMetadata"]["after"]
+    before = directories["list_metadata"]["before"]
+    after = directories["list_metadata"]["after"]
     return render_template(
         "home.html", directories=directories["data"], before=before, after=after
     )
@@ -57,7 +57,9 @@ def directory():
 @app.route("/users")
 def directory_users():
     directory_id = request.args.get("id")
-    users = workos_client.directory_sync.list_users(directory=directory_id)
+    print(directory_id)
+    users = workos.client.directory_sync.list_users(directory=directory_id)
+    print(users)
     return render_template("users.html", users=users)
 
 

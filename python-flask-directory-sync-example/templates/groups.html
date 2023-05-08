@@ -21,47 +21,41 @@
         </div>
     </div>
     <div class='flex'>
-        <div class="logged_in_div_left">
-            <div class="title-text">
-                <h1>Your app,</h1>
-                <h2 class="home-hero-gradient">Enterprise Ready</h2>
-            </div>
-            <div class="title-subtext">
-                <p>Start selling to enterprise customers with just a few lines of code.</p>
-                <p>Implement features like single sign-on in minutes instead of months.</p>
-            </div>
-            <div class="flex success-buttons">
-                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
-                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
-                        class='button button-outline sales-button'>Contact
-                        Sales</button></a>
-            </div>
-        </div>
+        
+
         <div class="logged_in_div_right">
             <div class="flex_column">
-                <h2>Groups Object Details</h2>
-
+                <div class="flex space-between width-507px">
+                    <div>
+                        <h2>Groups Details</h2>
+                    </div>
+                    <div>
+                        <a href="javascript:history.back()"><button
+                            class='button button-sm button-outline'>Back</button></a>
+                    </div>
+                </div>
                 {% if groups['data']|length > 0 %}
-                <div class="text_box">
-                    <ul>
-                        {% for group in groups['data'] %}
-                        {% if loop.index % 2 == 0 %}
-                        <li class="even">{{group['name']}}: <code>{{group['id']}}</code>
-                        </li>
-                        {% else %}
-                        <li>{{group['name']}}: <code>{{group['id']}}</code>
-                            {% endif %}
-                            {% endfor %}
-                    </ul>
+                <div>
+                    <table class="width-507px">
+                        <tr>
+                          <th>Name</th>
+                          <th>ID</th>
+                        </tr>
+                        {% for group in groups['data'] %}           
+                          <tr>
+                            <td class="ta-left">{{group['name']}}</td>
+                            <td class="ta-left"><code>{{group['id']}}</code></td>                                            
+                          </tr>
+                        {% endfor %}                    
+                    </table>
                 </div>
                 {% else %}
                 <div class="card width-40vw"><code>No Groups Found</code></div>
-                {% endif %}
-                <a style="align-self:flex-end; padding:10px;" href="javascript:history.back()"><button
-                        class='button button-sm button-outline'>Back</button></a>
+                {% endif %}                
             </div>
-
         </div>
+
+
     </div>
 </body>
 
