@@ -2,12 +2,13 @@ import os
 from flask import Flask, session, redirect, render_template, request, url_for, jsonify
 import json
 import workos
-
+from flask_lucide import Lucide
 
 # Flask Setup
 DEBUG = False
 app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY")
+lucide = Lucide(app)
 
 # WorkOS Setup
 

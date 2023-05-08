@@ -21,22 +21,7 @@
         </div>
     </div>
     <div class='flex'>
-        <div class="logged_in_div_left">
-            <div class="title-text">
-                <h1>Your app,</h1>
-                <h2 class="home-hero-gradient">Enterprise Ready</h2>
-            </div>
-            <div class="title-subtext">
-                <p>Start selling to enterprise customers with just a few lines of code.</p>
-                <p>Implement features like single sign-on in minutes instead of months.</p>
-            </div>
-            <div class="flex success-buttons">
-                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
-                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
-                        class='button button-outline sales-button'>Contact
-                        Sales</button></a>
-            </div>
-        </div>
+        
         <div class="logged_in_div_right">
             <div class="flex_column">
                 <div class="flex">
@@ -54,20 +39,26 @@
                     </div>
                 </div>
 
-                <div class="flex-column">
+                <div class="flex">
                     <div>
                         <form method="POST" action="{{ url_for('challenge_factor') }}">
-                            <div class='flex_column'>
-                                {% if factor['type'] == 'sms' %}
+                            {% if factor['type'] == 'sms' %}
+                            <div class='flex width-587px space-between'>                                
                                 <div>
-                                    <input type="text" id="sms_message" name="sms_message" class="text_input"
+                                    <input type="text" class="text_input width-350px" id="sms_message" name="sms_message" class="text_input"
                                         placeholder="Custom SMS Message Input {{code}}">
-                                </div>
-                                {% endif %}
+                                </div>                                
                                 <div>
-                                    <button type="submit" class="button">Challenge Factor</button>
+                                    <button type="submit" class="button width-175px">Challenge Factor</button>
                                 </div>
                             </div>
+                            {% else %}
+                            <div class='flex width-587px'>                                
+                                <button type="submit" class="button width-175px">Challenge Factor</button>
+                            </div>
+                            
+                            {% endif %}
+
                         </form>
 
                     </div>

@@ -1,3 +1,4 @@
 Flask==2.0.0
 workos>=1.21.0
 python-dotenv
+flask-lucide==0.2.0
