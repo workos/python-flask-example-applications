@@ -47,19 +47,15 @@ def home():
 
 @app.route("/directory")
 def directory():
-    directory_id = request.args.get("id")
-    print(directory_id)
-    directory = workos.client.directory_sync.get_directory(directory_id)
-    print(directory)
+    directory_id = request.args.get("id")    
+    directory = workos.client.directory_sync.get_directory(directory_id)    
     return render_template("directory.html", directory=directory, id=directory["id"])
 
 
 @app.route("/users")
 def directory_users():
-    directory_id = request.args.get("id")
-    print(directory_id)
-    users = workos.client.directory_sync.list_users(directory=directory_id)
-    print(users)
+    directory_id = request.args.get("id")    
+    users = workos.client.directory_sync.list_users_v2(directory=directory_id)    
     return render_template("users.html", users=users)
 
 

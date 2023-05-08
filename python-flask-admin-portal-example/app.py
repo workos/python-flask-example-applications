@@ -4,11 +4,13 @@ from flask import Flask, redirect, render_template, request, url_for
 import workos
 from workos import client as workos_client
 from workos import portal
+from flask_lucide import Lucide
 
 
 # Flask Setup
 DEBUG = False
 app = Flask(__name__)
+lucide = Lucide(app)
 
 # WorkOS Setup
 workos.api_key = os.getenv("WORKOS_API_KEY")
@@ -43,15 +45,8 @@ def provision_enterprise():
     return render_template("org_logged_in.html")
 
 
-@app.route("/sso_admin_portal", methods=["GET", "POST"])
-def sso_admin_portal():
-    portal_link = workos_client.portal.generate_link(organization=org_id, intent="sso")
-    return redirect(portal_link["link"])
-
-
-@app.route("/dsync_admin_portal", methods=["GET", "POST"])
-def dsync_admin_portal():
-    portal_link = workos_client.portal.generate_link(
-        organization=org_id, intent="dsync"
-    )
+@app.route("/launch_admin_portal", methods=["GET", "POST"])
+def launch_admin_portal():
+    intent = request.args.get("intent")    
+    portal_link = workos_client.portal.generate_link(organization=org_id, intent=intent)
     return redirect(portal_link["link"])
