@@ -33,7 +33,7 @@ app.jinja_env.filters["tojson_pretty"] = to_pretty_json
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    try:        
+    try:
         link = workos.client.portal.generate_link(
             organization=session["organization_id"], intent="audit_logs"
         )
@@ -57,9 +57,9 @@ def index():
         after = organizations["listMetadata"]["after"]
         return render_template(
             "login.html",
-            organizations=organizations["data"], 
-            before=before, 
-            after=after
+            organizations=organizations["data"],
+            before=before,
+            after=after,
         )
 
 

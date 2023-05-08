@@ -47,6 +47,6 @@ def provision_enterprise():
 
 @app.route("/launch_admin_portal", methods=["GET", "POST"])
 def launch_admin_portal():
-    intent = request.args.get("intent")    
+    intent = request.args.get("intent")
     portal_link = workos_client.portal.generate_link(organization=org_id, intent=intent)
     return redirect(portal_link["link"])

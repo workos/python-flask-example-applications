@@ -47,7 +47,7 @@ def auth():
 
     params = {"redirect_uri": url_for("auth_callback", _external=True), "state": {}}
 
-    if login_type == "saml":        
+    if login_type == "saml":
         params["organization"] = CUSTOMER_ORGANIZATION_ID
     else:
         params["provider"] = login_type
