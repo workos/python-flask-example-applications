@@ -43,8 +43,7 @@ def enroll_sms_factor():
     phone_number = request.form.get("phone_number")
 
     new_factor = workos.client.mfa.enroll_factor(
-        type=factor_type, 
-        phone_number=phone_number
+        type=factor_type, phone_number=phone_number
     )
 
     session["factor_list"].append(new_factor)
@@ -52,22 +51,20 @@ def enroll_sms_factor():
     return redirect("/")
 
 
-@app.route('/enroll_totp_factor', methods=['POST'])
+@app.route("/enroll_totp_factor", methods=["POST"])
 def enroll_totp_factor():
     data = request.get_json()
-    type = data['type']
-    issuer = data['issuer']
-    user = data['user']
+    type = data["type"]
+    issuer = data["issuer"]
+    user = data["user"]
 
     new_factor = workos.client.mfa.enroll_factor(
-        type=type,
-        totp_issuer=issuer,
-        totp_user=user
+        type=type, totp_issuer=issuer, totp_user=user
     )
 
-    session['factor_list'].append(new_factor)
+    session["factor_list"].append(new_factor)
     session.modified = True
-    return jsonify(new_factor['totp']['qr_code'])
+    return jsonify(new_factor["totp"]["qr_code"])
 
 
 @app.route("/factor_detail")
