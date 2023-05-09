@@ -13,6 +13,8 @@ workos.api_key = os.getenv("WORKOS_API_KEY")
 workos.project_id = os.getenv("WORKOS_CLIENT_ID")
 workos.base_api_url = "http://localhost:5000/" if DEBUG else workos.base_api_url
 
+redirect_uri = "http://localhost:5000/success"
+
 
 def to_pretty_json(value):
     return json.dumps(value, sort_keys=True, indent=4)
@@ -31,7 +33,7 @@ def passwordless_auth():
     email = request.form["email"]
 
     session = workos_client.passwordless.create_session(
-        {"email": email, "type": "MagicLink"}
+        {"email": email, "type": "MagicLink", "redirect_uri": redirect_uri}
     )
 
     # Send a custom email using your own service
