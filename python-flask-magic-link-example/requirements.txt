@@ -1,3 +1,4 @@
 Flask==2.0.0
-workos>=1.20.2
+workos>=1.23.0
+urllib3==1.26.7
 python-dotenv
