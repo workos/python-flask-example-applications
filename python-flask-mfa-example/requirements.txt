@@ -1,4 +1,4 @@
-Flask==2.0.0
+Flask==2.2.5
 workos>=1.23.3
 urllib3==1.26.7
 python-dotenv
